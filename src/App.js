@@ -36,7 +36,6 @@ class App extends Component {
 	}
 	
 	start(){
-		console.log(this);
 		global.JF.login(this.onLoginSuccess, this.onLoginFailure); 
 	}
 }
