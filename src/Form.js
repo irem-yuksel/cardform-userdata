@@ -8,25 +8,44 @@ class Form extends Component {
 			formID : this.props.formID,
 			result : null,
 		};
-		this.irem = this.irem.bind(this);
+		this.renderResult = this.renderResult.bind(this);
 	}
 	
-	irem(){
-		var url = "https://denis.jotform.pro/server.php?";
-		var xhttp = new XMLHttpRequest();
-	    xhttp.open("POST", url, true);
-	    xhttp.setRequestHeader("Content-type", "application/json");
-	    xhttp.send("action=getCardformData&formID=this.props.formID");
-	    var response = xhttp.responseText;
-	    this.setState({
-    		result : response,
-		});
+	componentWillMount(){
+		var url = "https://denis.jotform.pro/server.php?action=getCardformData&formID=72122391023948";
+		// var url = "https://denis.jotform.pro/server.php?action=getCardformData&formID="+ {this.props.formID};
+
+		fetch(url, {
+			method: 'POST',
+		 	headers: {
+		    'Accept': 'application/jsonp, text/plain, */*',
+		    'Content-Type': 'application/jsonp',
+		    'Access-Control-Allow-Origin': 'http://localhost:3000'
+  			},
+		}).then(res=>res.json())
+  		.then(res=> this.renderResult(res));
+	}
+
+
+	renderResult(line) {
+
+		console.log(line);
+		var data = line[0].data;
+		console.log(data);	
+		var iremof=JSON.parse(data["1"]);
+		console.log(data["1"]);	
+		console.log(iremof);	
+		console.log(data["1"].length);	
+		console.log(iremof.length);	
+		 
+
 	}
 
 	render() {
+		// const content = (this.state.result.map(this.renderResult);
 		return (
 			<div>
-				<p>Lorem</p>	
+								
 			</div>		
 		);
 	}
