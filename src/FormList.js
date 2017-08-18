@@ -35,7 +35,7 @@ class FormList extends Component {
 		return (
 			<tr key={ form.id }>
 				<th>{ form.title }</th>
-				<th> <button id= { form.id } onClick = { this._onButtonClick.bind(this, form.id) } > Select </button> </th>
+				<th> <button onClick = { this._onButtonClick.bind(this, form.id) } > Select </button> </th>
 			</tr>
 		);
 	}
