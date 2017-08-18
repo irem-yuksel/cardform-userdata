@@ -84,7 +84,7 @@ class Form extends Component {
 		if(item !== 0 || !isNaN(item)){
 			return (
 				<div>
-					<p> <b> {item} </b> people left the form before Question #{index+1}. </p>
+					<p> <b> {item} </b> people did not see Question #{index+1}. </p>
 				</div>
 			);
 		}
